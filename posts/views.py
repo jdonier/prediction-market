@@ -170,8 +170,6 @@ def delete_user(request, id_user):
 	
 def home(request):	
 	titre="Home"
-	if request.user.is_authenticated:
-		return redirect(reverse(user, kwargs={'id_user':request.user.id}))
 	return render(request, 'posts/home.html', locals())
 	
 def contact(request):

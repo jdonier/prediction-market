@@ -8,8 +8,9 @@
 	
     Welcome on Cerbère Capital website. We warn you that Stubbing may become addictive. 
     <a href="http://http://www.bloomberg.com/">Bloomberg news feed </a></br></br>
+	{% if not request.user.is_authenticated %}
 	<a class="signup_button round" href="{% url 'posts.views.sign_up' %}" >S'inscrire!</a>
-	
+	{% endif %}
   </p>
 {% endblock %}
   
