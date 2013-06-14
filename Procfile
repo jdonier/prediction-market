@@ -1,1 +1,1 @@
-web: gunicorn twitter:app
+web: python manage.py runserver
