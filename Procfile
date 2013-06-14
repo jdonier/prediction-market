@@ -1,1 +1,1 @@
-web: python twitter/manage.py runserver
+web: python manage.py runserver -b 0.0.0.0:$PORT
