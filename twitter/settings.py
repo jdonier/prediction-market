@@ -1,4 +1,6 @@
 ﻿# Django settings for twitter project.
+import os.path
+PROJECT_DIR = os.path.dirname(os.path.dirname(__file__)) # this is not Django setting.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -76,7 +78,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-	'/home/media/css/',
+	os.path.join(PROJECT_DIR, "media/css/"),
 )
 
 # List of finder classes that know how to find static files in
@@ -116,7 +118,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-	'/home/templates',
+	os.path.join(PROJECT_DIR, "templates"),
 )
 
 INSTALLED_APPS = (
