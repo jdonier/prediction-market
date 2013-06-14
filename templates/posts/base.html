@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+	{% include "posts/stylesheets.html" %}
+    <title>Cerbère Capital | {{titre}}</title>
+  </head>
+  <body>
+    <div class="container">
+	{% include "posts/header.html" %}
+      <section class="round">
+    {% block content %}{% endblock %}
+      </section>
+	{% include "posts/footer.html" %}
+    </div>
+  </body>
+</html>

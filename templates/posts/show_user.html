@@ -1,0 +1,28 @@
+﻿{% extends "posts/base.html" %}
+
+{% block content %}
+<table class="profile" summary="Information profil">
+  <tr>
+    <td class="main">
+      <h1>
+        {{user.username}}
+      </h1>
+	
+    <p></br>{% for marketvote in myvotes %}
+		{% for key, value in marketvote.items %}
+		{{key}} {{value}}</br>
+		{% endfor%}</br>
+  {% endfor %}
+  </p>
+    </td>
+	
+    <td class="sidebar round">
+      <strong>Nom</strong> {{user.username}}<br />
+      <strong>URL</strong>  <a  href="{% url 'posts.views.user' user.id %}" >user/{{user.id}}</a>
+    </td>
+  </tr>
+  
+  
+</table>
+{% endblock %}
+  

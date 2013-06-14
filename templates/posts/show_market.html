@@ -1,0 +1,38 @@
+﻿{% extends "posts/base.html" %}
+
+{% block content %}
+<table class="profile" summary="Information profil">
+  <tr>
+    <td class="main">
+      <h1>
+        {{market.name}}
+      </h1>
+	  <p>
+			</br>{{market.description}}</br></br>
+			Created by {{market.creator}}  
+			{% if request.user.is_staff %}
+			<a href="{% url 'posts.views.delete_market' market.id %}" >Delete this market</a> - Settle Market : <a href="{% url 'posts.views.settle' market.id 1 %}" >Yes</a> / <a href="{% url 'posts.views.settle' market.id 0 %}" >No</a>
+			{% endif %}
+			</br></br>
+			Votes for Yes : {{market.nbYes}}
+  {% if request.user.is_authenticated %}
+   - <a href="{% url 'posts.views.vote' market.id 1 %}" >Vote Yes !</a>
+  {% endif %}</br>
+			Votes for No : {{market.nbNo}}
+  {% if request.user.is_authenticated %}
+   - <a href="{% url 'posts.views.vote' market.id 0 %}" >Vote No !</a>
+  {% endif %}</br>
+	  </p>
+	  
+		{% if request.user.is_authenticated %}
+		<td class="sidebar round">
+		  Points : {{voter.points}}</br>
+		  <a href="{% url 'posts.views.new_market' %}" >Create your market</a>
+		</td>
+		{% endif %}
+	  
+    </td>
+  </tr>
+</table>
+{% endblock %}
+  

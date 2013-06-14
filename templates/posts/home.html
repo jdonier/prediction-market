@@ -1,0 +1,15 @@
+﻿{% extends "posts/base.html" %}
+
+{% block content %}
+    <h1>Home</h1>
+
+  <p>
+    {% if sauvegarde %}Votre inscription a bien été prise en compte !{% endif %}</br>
+	
+    Welcome on Cerbère Capital website. We warn you that Stubbing may become addictive. 
+    <a href="http://http://www.bloomberg.com/">Bloomberg news feed </a></br></br>
+	<a class="signup_button round" href="{% url 'posts.views.sign_up' %}" >S'inscrire!</a>
+	
+  </p>
+{% endblock %}
+  

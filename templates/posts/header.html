@@ -1,0 +1,21 @@
+﻿{% load static %}
+<header>
+
+<a href="{% url 'posts.views.home' %}" ><img src="{% static 'logo.png' %}" alt="Mon image"/></a>
+  <nav class="round">
+    <ul>
+      <li><a href="{% url 'posts.views.home' %}" >Home</a></li>
+      <li><a href="{% url 'posts.views.contact' %}" >Contact</a></li>
+      <li><a href="{% url 'posts.views.help' %}" >Help</a></li>
+	   <li><a href="{% url 'posts.views.all_markets' %}" >Markets</a></li>
+		{% if request.user.is_authenticated %}
+			<li><a href="{% url 'posts.views.user' request.user.id %}" >Profile</a>
+			<li><a href="{% url 'posts.views.all_users' %}" >Users</a></li>
+			<li><a href="{% url 'posts.views.sign_out' %}" >Sign Out</a></li>
+		{% else %}
+			<li><a href="{% url 'posts.views.sign_in' %}" >Sign In</a></li>
+		{% endif %}
+      <li><a href="{% url 'posts.views.sign_up' %}" >Sign Up</a></li>
+    </ul>
+  </nav>
+</header>

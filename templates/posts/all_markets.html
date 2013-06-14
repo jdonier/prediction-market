@@ -1,0 +1,50 @@
+﻿{% extends "posts/base.html" %}
+
+{% block content %}
+<table class="profile" summary="Information profil">
+  <tr>
+      <h1>
+        All Markets
+      </h1>
+	
+
+ <td class="main">		
+    <ul class="users">
+  {% for market in minis %}
+    <li>
+      <a href="{% url 'posts.views.market' market.id %}" >{{market.name}} </a>
+			{% if request.user.is_staff %}
+			  - <a href="{% url 'posts.views.delete_market' market.id %}" >Delete this market</a>
+			{% endif %}
+    </li>
+  {% endfor %}
+</ul>
+
+<div class="pagination">
+    <span class="step-links">
+       {% if minis.has_previous %}
+           <a href="{% url 'url_liste' minis.previous_page_number %}">Précédente</a> -
+       {% endif %}
+ 
+       <span class="current">
+           Page {{ minis.number }} sur {{ minis.paginator.num_pages }}
+       </span>
+ 
+       {% if minis.has_next %}
+           - <a href="{% url 'url_liste' minis.next_page_number %}">Suivante</a>
+       {% endif %}
+    </span>
+</div>
+
+    </td>
+
+  {% if request.user.is_authenticated %}
+		<td class="sidebar round">
+		  <a href="{% url 'posts.views.new_market' %}" >Create your market</a>
+		</td>
+{% endif %}
+
+  </tr>
+</table>
+{% endblock %}
+  

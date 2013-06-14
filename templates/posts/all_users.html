@@ -1,0 +1,39 @@
+﻿{% extends "posts/base.html" %}
+
+{% block content %}
+<table class="profile" summary="Information profil">
+  <tr>
+      <h1>
+        All Users
+      </h1>
+	
+    <ul class="users">
+  {% for voter in minis %}
+    <li>
+      <a href="{% url 'posts.views.user' user.id %}" >{{voter.user.username}}</a> - 
+	  {{voter.points}} points - 
+       {% if request.user.is_staff %} <a href="{% url 'delete_user' voter.user.id %}" > Delete </a> {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+
+<div class="pagination">
+    <span class="step-links">
+       {% if minis.has_previous %}
+           <a href="{% url 'url_liste' minis.previous_page_number %}">Précédente</a> -
+       {% endif %}
+ 
+       <span class="current">
+           Page {{ minis.number }} sur {{ minis.paginator.num_pages }}
+       </span>
+ 
+       {% if minis.has_next %}
+           - <a href="{% url 'url_liste' minis.next_page_number %}">Suivante</a>
+       {% endif %}
+    </span>
+</div>
+
+  </tr>
+</table>
+{% endblock %}
+  

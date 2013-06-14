@@ -1,0 +1,14 @@
+﻿{% extends "posts/base.html" %}
+
+{% block content %}
+    <h1>Sign Up</h1>
+
+  <p>
+ 
+<form action="{% url "posts.views.sign_up" %}" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+ </p>
+{% endblock %}
+  
