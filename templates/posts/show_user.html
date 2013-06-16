@@ -8,8 +8,8 @@
         {{user.username}}
       </h1>
 	
-    <p></br>{% for marketvote in myvotes %}
-		{% for key, value in marketvote.items %}
+    <p></br>{% for markettrade in myTrades %}
+		{% for key, value in markettrade.items %}
 		{{key}} {{value}}</br>
 		{% endfor%}</br>
   {% endfor %}

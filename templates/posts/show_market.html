@@ -14,19 +14,33 @@
 			<a href="{% url 'posts.views.delete_market' market.id %}" >Delete this market</a> - Settle Market : <a href="{% url 'posts.views.settle' market.id 1 %}" >Yes</a> / <a href="{% url 'posts.views.settle' market.id 0 %}" >No</a>
 			{% endif %}
 			</br></br>
-			Votes for Yes : {{market.nbYes}}
-  {% if request.user.is_authenticated %}
-   - <a href="{% url 'posts.views.vote' market.id 1 %}" >Vote Yes !</a>
-  {% endif %}</br>
-			Votes for No : {{market.nbNo}}
-  {% if request.user.is_authenticated %}
-   - <a href="{% url 'posts.views.vote' market.id 0 %}" >Vote No !</a>
-  {% endif %}</br>
+			Buy volume : {{buyVol}}</br>
+			Sell volume : {{buySell}}</br>
 	  </p>
 	  
 		{% if request.user.is_authenticated %}
+		<form method="post" action=".">
+			   {% csrf_token %}
+			   {{ form.as_p }}
+			<input type="submit"/>
+		</form>
+		{% endif %}</br></br>
+		
+	{{test}}
+	  Sell orders :</br></br>
+	  {% for order in sellOrders %}
+	  {{order.price}} - {{order.volume}} </br>
+	  {% endfor %}</br>	
+		
+	  Buy Orders :</br></br>
+	  {% for order in buyOrders %}
+	  {{order.price}} - {{order.volume}} </br>
+	  {% endfor %}</br>
+	  
+	  
+		{% if request.user.is_authenticated %}
 		<td class="sidebar round">
-		  Points : {{voter.points}}</br>
+		  Points : {{trader.balance}} - Available : {{available}}</br>
 		  <a href="{% url 'posts.views.new_market' %}" >Create your market</a>
 		</td>
 		{% endif %}

@@ -8,11 +8,11 @@
       </h1>
 	
     <ul class="users">
-  {% for voter in minis %}
+  {% for trader in minis %}
     <li>
-      <a href="{% url 'posts.views.user' user.id %}" >{{voter.user.username}}</a> - 
-	  {{voter.points}} points - 
-       {% if request.user.is_staff %} <a href="{% url 'delete_user' voter.user.id %}" > Delete </a> {% endif %}
+      <a href="{% url 'posts.views.user' user.id %}" >{{trader.user.username}}</a> - 
+	  {{trader.balance}} points - 
+       {% if request.user.is_staff %} <a href="{% url 'delete_user' trader.user.id %}" > Delete </a> {% endif %}
     </li>
   {% endfor %}
 </ul>

@@ -14,3 +14,8 @@ class ConnexionForm(forms.Form):
 class MarketForm(forms.Form):
     name = forms.CharField(label="Title", max_length=30)
     description = forms.CharField(label="Description",  max_length=255)
+	
+class TradeForm(forms.Form):
+    type = forms.ChoiceField(label="Type", choices=((1, "Buy"), (0, "Sell")))
+    price = forms.DecimalField(label="Price")
+    volume = forms.DecimalField(label="Volume")
